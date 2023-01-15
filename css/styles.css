@@ -23,8 +23,7 @@ textarea {
 }
 
 img {
-  width: 100%;
-  height: auto;
+  max-width: 100%;
   object-fit: cover;
 }
 
@@ -35,8 +34,110 @@ img {
   --colors-darker-blue: hsl(216, 50%, 16%);
   --colors-dark-blue: hsl(215, 32%, 27%);
   --colors-white: hsl(0, 0%, 100%);
+  --weight-normal: 300;
+  --weight-semi-bold: 400;
+  --weight-bold: 600;
 }
 
 body {
-  font: 300 1.125rem 'Outfit', sans-serif;
+  font: var(--weight-normal) 1rem 'Outfit', sans-serif;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: var(--colors-very-dark-blue);
+}
+
+a {
+  text-decoration: none;
+  color: var(--colors-white);
+  transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+  color: var(--colors-cyan);
+}
+
+.nft-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: min(350px, 100%);
+  padding: 1.5rem;
+  background-color: var(--colors-darker-blue);
+  border-radius: 0.75rem;
+  color: var(--colors-soft-blue);
+  box-shadow: 0 2rem 0 0.75rem rgba(0, 0, 0, 0.1),
+    0 2rem 0 3rem rgba(0, 0, 0, 0.05);
+}
+
+.thumbnail {
+  display: block;
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.thumbnail img {
+  display: block;
+  border-radius: inherit;
+}
+
+.thumbnail::before,
+.thumbnail::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity ease-in-out 0.3s;
+}
+
+.thumbnail:hover::before {
+  background-color: var(--colors-cyan);
+  opacity: 0.5;
+  border-radius: inherit;
+}
+
+.thumbnail:hover::after {
+  background: url('../images/icon-view.svg') no-repeat center;
+  opacity: 1;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: var(--weight-bold);
+}
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  background-color: var(--colors-dark-blue);
+}
+
+.rate-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rate-container > span,
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rate {
+  color: var(--colors-cyan);
+  font-weight: var(--weight-semi-bold);
+}
+
+.author img {
+  width: 2.5rem;
+  border: 1px solid var(--colors-white);
+  border-radius: 50%;
+  margin-right: 0.5rem;
 }
